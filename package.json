@@ -5,12 +5,14 @@
   "private": true,
   "scripts": {
     "frontend:dev": "cd fsad-review1-main && npm run dev",
+    "frontend:install": "npm --prefix fsad-review1-main install",
     "frontend:build": "cd fsad-review1-main && npm run build",
     "frontend:preview": "cd fsad-review1-main && npm run preview",
     "backend:run": "cd backend && mvn spring-boot:run",
     "backend:build": "cd backend && mvn clean install -DskipTests",
     "dev": "concurrently \"npm run frontend:dev\" \"npm run backend:run\"",
-    "build": "npm run frontend:build && npm run backend:build"
+    "build": "npm run frontend:install && npm run frontend:build",
+    "build:full": "npm run frontend:install && npm run frontend:build && npm run backend:build"
   },
   "devDependencies": {
     "concurrently": "^8.2.0"
