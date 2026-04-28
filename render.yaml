@@ -1,0 +1,26 @@
+services:
+  - type: static_site
+    name: edulearn-frontend
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: NODE_ENV
+        value: production
+    routes:
+      - path: /
+        destination: /index.html
+
+  - type: web_service
+    name: edulearn-backend
+    runtime: java
+    buildCommand: mvn clean install -DskipTests
+    startCommand: java -jar target/edulearn-backend-1.0.0.jar
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: SERVER_PORT
+        value: 8080
+    domains:
+      - edulearn-backend.onrender.com
+    healthCheckPath: /api/health
