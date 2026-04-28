@@ -6,6 +6,7 @@
   "scripts": {
     "frontend:dev": "cd fsad-review1-main && npm run dev",
     "frontend:build": "cd fsad-review1-main && npm run build",
+    "frontend:preview": "cd fsad-review1-main && npm run preview",
     "backend:run": "cd backend && mvn spring-boot:run",
     "backend:build": "cd backend && mvn clean install -DskipTests",
     "dev": "concurrently \"npm run frontend:dev\" \"npm run backend:run\"",
